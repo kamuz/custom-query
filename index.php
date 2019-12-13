@@ -4,16 +4,17 @@
 		<?php
 		$args = array(
 			'post_type' => 'post',
-			'posts_per_page' => 100,
-			'orderby' => 'title',
-			'order' => 'ASC'
+			'posts_per_page' => 10,
+			'meta_key' => 'views',
+			'orderby' => 'meta_value_num',
+			'order' => 'DESC'
 		);
 		$query = new WP_Query($args);
 		?>
 		<?php if($query->have_posts()): ?>
 			<ul>
 				<?php while($query->have_posts()) : $query->the_post(); ?>
-					<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></li>
+					<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> (<?php if(!empty(get_field('views'))) { echo get_field('views'); } ?>)</li>
 				<?php endwhile;?>
 			</ul>
 		<?php else: ?>
