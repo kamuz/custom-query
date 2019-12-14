@@ -4,21 +4,25 @@
 		<?php
 		$args = array(
 			'post_type' => 'post',
-			'posts_per_page' => 10,
-			'meta_key' => 'source',
-			'meta_compare' => '!=',
-			'meta_value' => 'Yandex',
-			'orderby' => 'meta_value',
-			'order' => 'DESC'
+			'posts_per_page' => -1,
+			'category__and' => array(15, 25)
 		);
 		$query = new WP_Query($args);
 		?>
 		<?php if($query->have_posts()): ?>
-			<ul>
 				<?php while($query->have_posts()) : $query->the_post(); ?>
-					<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> (<?php if(!empty(get_field('views'))) { echo get_field('views'); } ?>) &mdash; <?php if(!empty(get_field('source'))) { echo get_field('source'); } ?></li>
+					<div class="post">
+						<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> <?php if(!empty(get_field('views'))) { echo '('. get_field('views') . ')'; } ?><?php if(!empty(get_field('source'))) { echo ' &mdash; ' . get_field('source'); } ?></h3>
+						<div class="categories">
+							<strong>Categories:</strong>
+							<?php the_category() ?>
+						</div>
+						<div class="tags">
+							<strong>Tags:</strong>
+							<?php the_tags() ?>
+						</div>
+					</div>
 				<?php endwhile;?>
-			</ul>
 		<?php else: ?>
 			<?php echo __('Pages not found yet, sorry!', 'simple') ?>
 		<?php endif; ?>

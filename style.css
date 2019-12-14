@@ -42,3 +42,9 @@ a {
 .container .featured a {
 	color: #666;
 }
+
+.container .post {
+	padding: 10px 20px 20px;
+	background-color: #DFFFE7;
+	margin-bottom: 20px;
+}
