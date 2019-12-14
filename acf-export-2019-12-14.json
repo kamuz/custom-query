@@ -1,7 +1,7 @@
 [
     {
         "key": "group_5df3dee8ef6a3",
-        "title": "Page Views",
+        "title": "Post Fields",
         "fields": [
             {
                 "key": "field_5df3deeeb3887",
@@ -12,7 +12,7 @@
                 "required": 0,
                 "conditional_logic": 0,
                 "wrapper": {
-                    "width": "",
+                    "width": "50",
                     "class": "",
                     "id": ""
                 },
@@ -23,6 +23,25 @@
                 "min": "",
                 "max": "",
                 "step": ""
+            },
+            {
+                "key": "field_5df4e86fbe2f7",
+                "label": "Source",
+                "name": "source",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
             }
         ],
         "location": [
@@ -35,7 +54,7 @@
             ]
         ],
         "menu_order": 0,
-        "position": "side",
+        "position": "normal",
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
