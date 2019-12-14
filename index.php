@@ -6,6 +6,8 @@
 			'post_type' => 'post',
 			'posts_per_page' => 10,
 			'meta_key' => 'views',
+			'meta_compare' => '=',
+			'meta_value' => 1000,
 			'orderby' => 'meta_value_num',
 			'order' => 'DESC'
 		);
