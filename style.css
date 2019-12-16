@@ -48,3 +48,26 @@ a {
 	background-color: #DFFFE7;
 	margin-bottom: 20px;
 }
+
+hr {
+	height: 1px;
+	background-color: #ccc;
+	border: none;
+	margin-top: 20px;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.product .flex {
+	padding: 10px;
+	background-color: #eee;
+}
+
+.product .flex .price div {
+	color: red;
+	font-weight: bold;
+	font-size: 26px;
+}
