@@ -17,6 +17,13 @@ a {
 	color: blue;
 }
 
+hr {
+	height: 1px;
+	background-color: #ccc;
+	border: none;
+	margin-top: 20px;
+}
+
 .container {
 	width: 70%;
 	margin: 30px auto;
@@ -43,19 +50,6 @@ a {
 	color: #666;
 }
 
-.container .post {
-	padding: 10px 20px 20px;
-	background-color: #DFFFE7;
-	margin-bottom: 20px;
-}
-
-hr {
-	height: 1px;
-	background-color: #ccc;
-	border: none;
-	margin-top: 20px;
-}
-
 .flex {
 	display: flex;
 	justify-content: space-between;
@@ -70,4 +64,18 @@ hr {
 	color: red;
 	font-weight: bold;
 	font-size: 26px;
+}
+
+.post {
+	padding: 10px 20px 20px;
+	background-color: #DFFFE7;
+	margin-bottom: 20px;
+}
+
+.post .tags {
+	font-weight: bold;
+}
+
+.post .tags a {
+	font-weight: normal;
 }

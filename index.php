@@ -5,21 +5,37 @@
 		$args = array(
 			'post_type' => 'post',
 			'posts_per_page' => -1,
-			'category__and' => array(15, 25)
+			'tax_query' => array(
+				'relation' => 'AND',
+				array(
+					'taxonomy' => 'category',
+					'field' => 'slug',
+					'terms' => array('programming'),
+					'include_children' => true,
+					'operator' => 'IN'
+				),
+				array(
+					'taxonomy' => 'post_tag',
+					'field' => 'slug',
+					'terms' => array('javascript', 'wordpress'),
+					'operator' => 'IN'
+				)
+			)
 		);
 		$query = new WP_Query($args);
 		?>
 		<?php if($query->have_posts()): ?>
 				<?php while($query->have_posts()) : $query->the_post(); ?>
 					<div class="post">
-						<h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> <?php if(!empty(get_field('views'))) { echo '('. get_field('views') . ')'; } ?><?php if(!empty(get_field('source'))) { echo ' &mdash; ' . get_field('source'); } ?></h3>
-						<div class="categories">
-							<strong>Categories:</strong>
-							<?php the_category() ?>
-						</div>
-						<div class="tags">
-							<strong>Tags:</strong>
-							<?php the_tags() ?>
+						<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> <?php if(!empty(get_field('views'))) { echo '('. get_field('views') . ')'; } ?><?php if(!empty(get_field('source'))) { echo ' &mdash; ' . get_field('source'); } ?></h2>
+						<div class="flex">
+							<div class="categories">
+								<strong>Categories:</strong>
+								<?php the_category() ?>
+							</div>
+							<div class="tags">
+								<?php the_tags() ?>
+							</div>
 						</div>
 					</div>
 				<?php endwhile;?>

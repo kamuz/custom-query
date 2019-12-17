@@ -1,0 +1,101 @@
+[
+    {
+        "key": "group_5df7e8f13595e",
+        "title": "Shop",
+        "fields": [
+            {
+                "key": "field_5df7e901eb50d",
+                "label": "Price",
+                "name": "price",
+                "type": "number",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "min": "",
+                "max": "",
+                "step": ""
+            },
+            {
+                "key": "field_5df7e90deb50e",
+                "label": "Size",
+                "name": "size",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "s": "S",
+                    "m": "M",
+                    "l": "L",
+                    "xl": "XL"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "label",
+                "ajax": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_5df7e976eb50f",
+                "label": "Color",
+                "name": "color",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "34",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "red": "Red",
+                    "blue": "Blue",
+                    "green": "Green",
+                    "dark": "Dark",
+                    "white": "White"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "label",
+                "ajax": 0,
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]
