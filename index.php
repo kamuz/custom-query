@@ -25,20 +25,20 @@
 		$query = new WP_Query($args);
 		?>
 		<?php if($query->have_posts()): ?>
-				<?php while($query->have_posts()) : $query->the_post(); ?>
-					<div class="post">
-						<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> <?php if(!empty(get_field('views'))) { echo '('. get_field('views') . ')'; } ?><?php if(!empty(get_field('source'))) { echo ' &mdash; ' . get_field('source'); } ?></h2>
-						<div class="flex">
-							<div class="categories">
-								<strong>Categories:</strong>
-								<?php the_category() ?>
-							</div>
-							<div class="tags">
-								<?php the_tags() ?>
-							</div>
+			<?php while($query->have_posts()) : $query->the_post(); ?>
+				<div class="post">
+					<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a> <?php if(!empty(get_field('views'))) { echo '('. get_field('views') . ')'; } ?><?php if(!empty(get_field('source'))) { echo ' &mdash; ' . get_field('source'); } ?></h2>
+					<div class="flex">
+						<div class="categories">
+							<strong>Categories:</strong>
+							<?php the_category() ?>
+						</div>
+						<div class="tags">
+							<?php the_tags() ?>
 						</div>
 					</div>
-				<?php endwhile;?>
+				</div>
+			<?php endwhile;?>
 		<?php else: ?>
 			<?php echo __('Pages not found yet, sorry!', 'simple') ?>
 		<?php endif; ?>

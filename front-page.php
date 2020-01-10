@@ -32,31 +32,31 @@
 		$query = new WP_Query($args);
 		?>
 		<?php if($query->have_posts()): ?>
-				<?php while($query->have_posts()) : $query->the_post(); ?>
-					<div class="product">
-						<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-						<div class="flex">
-							<div class="price">
-								<strong>Price:</strong>
-								<div>$<?php the_field('price') ?></div>
+			<?php while($query->have_posts()) : $query->the_post(); ?>
+				<div class="product">
+					<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+					<div class="flex">
+						<div class="price">
+							<strong>Price:</strong>
+							<div>$<?php the_field('price') ?></div>
+						</div>
+						<div class="size-color">
+							<div>
+								<strong>Size:</strong>
+								<?php the_field('size') ?>
 							</div>
-							<div class="size-color">
-								<div>
-									<strong>Size:</strong>
-									<?php the_field('size') ?>
-								</div>
-								<div>
-									<strong>Color:</strong>
-									<?php the_field('color') ?>
-								</div>
-							</div>
-							<div class="color">
-
+							<div>
+								<strong>Color:</strong>
+								<?php the_field('color') ?>
 							</div>
 						</div>
+						<div class="color">
+
+						</div>
 					</div>
-					<hr>
-				<?php endwhile;?>
+				</div>
+				<hr>
+			<?php endwhile;?>
 		<?php else: ?>
 			<?php echo __('Pages not found yet, sorry!', 'simple') ?>
 		<?php endif; ?>
