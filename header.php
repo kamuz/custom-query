@@ -1,3 +1,15 @@
+<?php
+if(!empty($_GET['type'])){
+    $type = $_GET['type'];
+} else {
+    $type = '';
+}
+if(!empty($_GET['search'])){
+    $search = $_GET['search'];
+} else {
+    $search = '';
+}
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -6,3 +18,15 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<div class="custom-search">
+    <form action="/search">
+        <input type="search" name="search" placeholder="Search..." value="<?php echo $search ?>">
+        <label for="type">Post Type:</label>
+        <select name="type" id="type">
+            <option value="">Any</option>
+            <option value="post" <?php echo ($type == 'post') ? 'selected' : '' ?>>Post</option>
+            <option value="movie" <?php echo ($type == 'movie') ? 'selected' : '' ?>>Movie</option>
+        </select>
+        <input type="submit" value="Search">
+    </form>
+</div>

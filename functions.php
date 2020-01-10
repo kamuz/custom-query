@@ -31,3 +31,27 @@ function remove_core_updates(){
 add_filter('pre_site_transient_update_core', 'remove_core_updates');
 add_filter('pre_site_transient_update_plugins', 'remove_core_updates');
 add_filter('pre_site_transient_update_themes', 'remove_core_updates');
+
+/**
+ * Custom Post Types
+ */
+function register_movie_post_type() {
+    $args = array (
+        'label' => 'Movies',
+        'labels' => array(
+            'menu_name' => 'Movies',
+            'name' => 'Movies',
+            'singular_name' => 'Movie',
+        ),
+        'public' => true,
+        'menu_icon' => 'dashicons-video-alt2',
+        'capability_type' => 'post',
+        'supports' => array(
+            'title',
+            'editor',
+            'thumbnail',
+        ),
+    );
+    register_post_type( 'movie', $args );
+}
+add_action( 'init', 'register_movie_post_type' );

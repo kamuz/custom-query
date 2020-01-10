@@ -7,6 +7,11 @@ Author URI: https://tutorial.pp.ua/
 Tags: starter theme, simple, lightweight
 */
 
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
 	font-size: 1.2em;
@@ -26,7 +31,7 @@ hr {
 
 .container {
 	width: 70%;
-	margin: 30px auto;
+	margin: 20px auto;
 	background-color: #fff;
 	padding: 25px;
 }
@@ -55,6 +60,20 @@ hr {
 	justify-content: space-between;
 }
 
+.post {
+	padding: 10px 20px 20px;
+	background-color: #DFFFE7;
+	margin-bottom: 20px;
+}
+
+.post .tags {
+	font-weight: bold;
+}
+
+.post .tags a {
+	font-weight: normal;
+}
+
 .product {
 	background-color: #f4f4f4;
 	padding: 5px 20px 20px;
@@ -70,20 +89,6 @@ hr {
 	font-weight: bold;
 	font-size: 26px;
 	margin-right: 50px;
-}
-
-.post {
-	padding: 10px 20px 20px;
-	background-color: #DFFFE7;
-	margin-bottom: 20px;
-}
-
-.post .tags {
-	font-weight: bold;
-}
-
-.post .tags a {
-	font-weight: normal;
 }
 
 .filter {
@@ -114,6 +119,39 @@ hr {
 	background-color: green;
 	color: #fff;
 	border-color: green;
+	padding: 0 10px;
+	cursor: pointer;
+}
+
+.custom-search {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+}
+
+.custom-search input,
+.custom-search select {
+	border: 1px solid #ccc;
+	height: 30px;
+	padding: 0 10px;
+	margin-right: 20px;
+}
+
+.custom-search label,
+.custom-search input,
+.custom-search select {
+	font-size: 15px;
+}
+
+.custom-search input[type="search"] {
+	margin-right: 20px;
+}
+
+.custom-search input[type="submit"] {
+	background-color: red;
+	color: #fff;
+	border-color: red;
 	padding: 0 10px;
 	cursor: pointer;
 }
