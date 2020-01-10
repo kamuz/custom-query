@@ -55,15 +55,21 @@ hr {
 	justify-content: space-between;
 }
 
-.product .flex {
-	padding: 10px;
-	background-color: #eee;
+.product {
+	background-color: #f4f4f4;
+	padding: 5px 20px 20px;
+	margin-bottom: 20px;
 }
 
-.product .flex .price div {
+.product .flex {
+	justify-content: flex-start;
+}
+
+.product .flex .price {
 	color: red;
 	font-weight: bold;
 	font-size: 26px;
+	margin-right: 50px;
 }
 
 .post {
@@ -78,4 +84,36 @@ hr {
 
 .post .tags a {
 	font-weight: normal;
+}
+
+.filter {
+	background-color: #E0F0FB;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.filter input,
+.filter select {
+	border: 1px solid #ccc;
+	height: 30px;
+	padding: 0 10px;
+	margin-right: 20px;
+}
+
+.filter input,
+.filter select,
+.filter label {
+	font-size: 15px;
+}
+
+.filter input[type="number"] {
+	width: 50px;
+}
+
+.filter input[type="submit"] {
+	background-color: green;
+	color: #fff;
+	border-color: green;
+	padding: 0 10px;
+	cursor: pointer;
 }
