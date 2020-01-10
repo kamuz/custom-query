@@ -68,7 +68,7 @@
                     "red": "Red",
                     "blue": "Blue",
                     "green": "Green",
-                    "dark": "Dark",
+                    "black": "Black",
                     "white": "White"
                 },
                 "default_value": [],
@@ -90,7 +90,7 @@
             ]
         ],
         "menu_order": 0,
-        "position": "normal",
+        "position": "acf_after_title",
         "style": "default",
         "label_placement": "top",
         "instruction_placement": "label",
