@@ -36,3 +36,12 @@ a {
 .container img {
 	max-width: 100%;
 }
+
+.container .featured {
+	padding: 30px;
+	background-color: #DCF0DD;
+}
+
+.container .featured a {
+	color: #666;
+}
