@@ -2,11 +2,13 @@
 	<div class="container">
 		<h1 class="title"><?php bloginfo( 'name' ); ?></h1>
 		<?php
-		$args  = array(
+		$args = array(
 			'post_type'      => 'post',
-			'posts_per_page' => 100,
-			'meta_key'       => 'views',
-			'orderby'        => 'meta_value_num',
+			'posts_per_page' => 10,
+			'meta_key'       => 'source',
+			'meta_compare'   => '!=',
+			'meta_value'     => 'Upwork',
+			'orderby'        => 'meta_value',
 			'order'          => 'DESC',
 		);
 		$query = new WP_Query( $args );
