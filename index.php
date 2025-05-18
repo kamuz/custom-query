@@ -6,18 +6,26 @@
 			'post_type'      => 'post',
 			'posts_per_page' => -1,
 			'meta_query'     => array(
-				'relation' => 'OR',
 				array(
-					'key'     => 'size',
-					'value'   => 's',
-					'type'    => 'CHAR',
-					'compare' => '=',
+					'relation' => 'OR',
+					array(
+						'key'     => 'size',
+						'value'   => 'm',
+						'type'    => 'CHAR',
+						'compare' => '=',
+					),
+					array(
+						'key'     => 'color',
+						'value'   => 'blue',
+						'type'    => 'CHAR',
+						'compare' => '=',
+					),
 				),
 				array(
 					'key'     => 'price',
-					'value'   => 100,
+					'value'   => array( 50, 200 ),
 					'type'    => 'NUMERIC',
-					'compare' => '>=',
+					'compare' => 'BETWEEN',
 				),
 			),
 		);
