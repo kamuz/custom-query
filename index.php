@@ -2,12 +2,24 @@
 	<div class="container">
 		<h1 class="title"><?php bloginfo( 'name' ); ?></h1>
 		<?php
-		$args = array(
+		$args  = array(
 			'post_type'      => 'post',
 			'posts_per_page' => -1,
-			'meta_key'       => 'size',
-			'meta_value'     => 'm',
-			'meta_compare'   => '=',
+			'meta_query'     => array(
+				'relation' => 'OR',
+				array(
+					'key'     => 'size',
+					'value'   => 's',
+					'type'    => 'CHAR',
+					'compare' => '=',
+				),
+				array(
+					'key'     => 'price',
+					'value'   => 100,
+					'type'    => 'NUMERIC',
+					'compare' => '>=',
+				),
+			),
 		);
 		$query = new WP_Query( $args );
 		?>
