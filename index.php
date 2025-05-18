@@ -5,8 +5,9 @@
 		$args = array(
 			'post_type'      => 'post',
 			'posts_per_page' => -1,
-			'category__and'  => array( 5, 6 ),
-			// 'category_name'  => 'tutorials+reviews',
+			'meta_key'       => 'size',
+			'meta_value'     => 'm',
+			'meta_compare'   => '=',
 		);
 		$query = new WP_Query( $args );
 		?>
@@ -14,15 +15,23 @@
 			<div>
 				<?php while ( $query->have_posts() ) : ?>
 					<?php $query->the_post(); ?>
-					<div class="post">
-						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> <?php echo ! empty( get_field( 'views' ) ) ? '(' . esc_html( get_field( 'views' ) . ')' ) : '(0)'; ?> <?php echo ! empty( get_field( 'source' ) ) ? esc_html( ' — ' . get_field( 'source' ) ) : ''; ?> </h3>
-						<div class="categories">
-							<strong>Categories:</strong>
-							<?php the_category(); ?>
-						</div>
-						<div class="tags">
-							<strong>Tags:</strong>
-							<?php the_tags( '', ', ' ); ?>
+					<div class="product">
+						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						<div class="flex">
+							<div class="price">
+								<strong>Price:</strong>
+								<div>$<?php the_field( 'price' ); ?></div>
+							</div>
+							<div class="size-color">
+								<div class="size">
+									<strong>Size:</strong>
+									<?php the_field( 'size' ); ?>
+								</div>
+								<div class="color">
+									<strong>Color:</strong>
+									<?php the_field( 'color' ); ?>
+								</div>
+							</div>
 						</div>
 					</div>
 				<?php endwhile; ?>
