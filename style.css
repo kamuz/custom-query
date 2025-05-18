@@ -12,6 +12,8 @@ Tags: starter theme, simple, lightweight
 }
 
 body {
+	padding: 0;
+	margin: 0;
 	font-size: 1.2em;
 	background-color: #eee;
 }
@@ -87,4 +89,37 @@ a {
 .pagination ul li {
 	display: inline-block;
 
+}
+
+.custom-search {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+}
+
+.custom-search input,
+.custom-search select {
+	border: 1px solid #ccc;
+	height: 30px;
+	padding: 0 10px;
+	margin-right: 20px;
+}
+
+.custom-search label,
+.custom-search input,
+.custom-search select {
+	font-size: 15px;
+}
+
+.custom-search input[type="search"] {
+	margin-right: 20px;
+}
+
+.custom-search input[type="submit"] {
+	background-color: red;
+	color: #fff;
+	border-color: red;
+	padding: 0 10px;
+	cursor: pointer;
 }

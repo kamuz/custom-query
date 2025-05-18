@@ -10,11 +10,10 @@
 			$paged = 1;
 		}
 		$args  = array(
-			'post_type'      => 'post',
+			'post_type'      => array( 'post', 'movie' ),
 			'paged'          => $paged,
 			'posts_per_page' => 2,
 		);
-		$query = new WP_Query( $args );
 		$query = new WP_Query( $args );
 		?>
 		<?php if ( $query->have_posts() ) : ?>
@@ -22,15 +21,14 @@
 				<?php while ( $query->have_posts() ) : ?>
 					<?php $query->the_post(); ?>
 					<div class="post">
-						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> <?php echo ! empty( get_field( 'views' ) ) ? '(' . esc_html( get_field( 'views' ) . ')' ) : '(0)'; ?> <?php echo ! empty( get_field( 'source' ) ) ? esc_html( ' — ' . get_field( 'source' ) ) : ''; ?> </h3>
-						<div class="categories">
-							<strong>Categories:</strong>
-							<?php the_category(); ?>
-						</div>
-						<div class="tags">
-							<strong>Tags:</strong>
-							<?php the_tags( '', ', ' ); ?>
-						</div>
+					<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+						<?php
+						if ( get_post_type() == 'post' ) {
+							echo 'Type: Post';
+						} elseif ( get_post_type() == 'movie' ) {
+							echo 'Type: Movie';
+						}
+						?>
 					</div>
 				<?php endwhile; ?>
 			</div>

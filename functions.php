@@ -17,3 +17,27 @@ if ( function_exists( 'add_theme_support' ) ) {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 }
+
+/**
+ * CPT for videos
+ */
+function register_movie_post_type() {
+	$args = array(
+		'label'           => 'Movies',
+		'labels'          => array(
+			'menu_name'     => 'Movies',
+			'name'          => 'Movies',
+			'singular_name' => 'Movie',
+		),
+		'public'          => true,
+		'menu_icon'       => 'dashicons-video-alt2',
+		'capability_type' => 'post',
+		'supports'        => array(
+			'title',
+			'editor',
+			'thumbnail',
+		),
+	);
+	register_post_type( 'movie', $args );
+}
+add_action( 'init', 'register_movie_post_type' );
