@@ -5,27 +5,20 @@
 		$args  = array(
 			'post_type'      => 'post',
 			'posts_per_page' => -1,
-			'meta_query'     => array(
+			'tax_query'      => array(
+				'relation' => 'AND',
 				array(
-					'relation' => 'OR',
-					array(
-						'key'     => 'size',
-						'value'   => 'm',
-						'type'    => 'CHAR',
-						'compare' => '=',
-					),
-					array(
-						'key'     => 'color',
-						'value'   => 'blue',
-						'type'    => 'CHAR',
-						'compare' => '=',
-					),
+					'taxonomy'         => 'category',
+					'field'            => 'slug',
+					'terms'            => array( 'reviews' ),
+					'include_children' => true,
+					'operator'         => 'IN',
 				),
 				array(
-					'key'     => 'price',
-					'value'   => array( 50, 200 ),
-					'type'    => 'NUMERIC',
-					'compare' => 'BETWEEN',
+					'taxonomy' => 'post_tag',
+					'field'    => 'slug',
+					'terms'    => array( 'Laravel' ),
+					'operator' => 'IN',
 				),
 			),
 		);
@@ -35,23 +28,15 @@
 			<div>
 				<?php while ( $query->have_posts() ) : ?>
 					<?php $query->the_post(); ?>
-					<div class="product">
-						<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						<div class="flex">
-							<div class="price">
-								<strong>Price:</strong>
-								<div>$<?php the_field( 'price' ); ?></div>
-							</div>
-							<div class="size-color">
-								<div class="size">
-									<strong>Size:</strong>
-									<?php the_field( 'size' ); ?>
-								</div>
-								<div class="color">
-									<strong>Color:</strong>
-									<?php the_field( 'color' ); ?>
-								</div>
-							</div>
+					<div class="post">
+						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> <?php echo ! empty( get_field( 'views' ) ) ? '(' . esc_html( get_field( 'views' ) . ')' ) : '(0)'; ?> <?php echo ! empty( get_field( 'source' ) ) ? esc_html( ' — ' . get_field( 'source' ) ) : ''; ?> </h3>
+						<div class="categories">
+							<strong>Categories:</strong>
+							<?php the_category(); ?>
+						</div>
+						<div class="tags">
+							<strong>Tags:</strong>
+							<?php the_tags( '', ', ' ); ?>
 						</div>
 					</div>
 				<?php endwhile; ?>
