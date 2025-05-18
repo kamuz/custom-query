@@ -4,12 +4,9 @@
 		<?php
 		$args = array(
 			'post_type'      => 'post',
-			'posts_per_page' => 10,
-			'meta_key'       => 'source',
-			'meta_compare'   => '!=',
-			'meta_value'     => 'Upwork',
-			'orderby'        => 'meta_value',
-			'order'          => 'DESC',
+			'posts_per_page' => -1,
+			'category__and'  => array( 5, 6 ),
+			// 'category_name'  => 'tutorials+reviews',
 		);
 		$query = new WP_Query( $args );
 		?>
@@ -17,8 +14,17 @@
 			<div>
 				<?php while ( $query->have_posts() ) : ?>
 					<?php $query->the_post(); ?>
-					<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> <?php echo ! empty( get_field( 'views' ) ) ? '(' . esc_html( get_field( 'views' ) . ')' ) : '(0)'; ?> <?php echo ! empty( get_field( 'source' ) ) ? esc_html( ' — ' . get_field( 'source' ) ) : ''; ?> </li>
-					<?php $current_post = $post->ID; ?>
+					<div class="post">
+						<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> <?php echo ! empty( get_field( 'views' ) ) ? '(' . esc_html( get_field( 'views' ) . ')' ) : '(0)'; ?> <?php echo ! empty( get_field( 'source' ) ) ? esc_html( ' — ' . get_field( 'source' ) ) : ''; ?> </h3>
+						<div class="categories">
+							<strong>Categories:</strong>
+							<?php the_category(); ?>
+						</div>
+						<div class="tags">
+							<strong>Tags:</strong>
+							<?php the_tags( '', ', ' ); ?>
+						</div>
+					</div>
 				<?php endwhile; ?>
 			</div>
 		<?php else : ?>
