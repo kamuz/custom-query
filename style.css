@@ -72,3 +72,19 @@ a {
 	font-weight: bold;
 	margin-right: 50px;
 }
+
+.pagination {
+	display: flex;
+	justify-content: center;
+}
+
+.pagination ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.pagination ul li {
+	display: inline-block;
+
+}

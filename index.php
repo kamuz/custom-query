@@ -2,26 +2,19 @@
 	<div class="container">
 		<h1 class="title"><?php bloginfo( 'name' ); ?></h1>
 		<?php
+		if ( get_query_var( 'paged' ) ) {
+			$paged = get_query_var( 'paged' );
+		} elseif ( get_query_var( 'page' ) ) {
+			$paged = get_query_var( 'page' );
+		} else {
+			$paged = 1;
+		}
 		$args  = array(
 			'post_type'      => 'post',
-			'posts_per_page' => -1,
-			'tax_query'      => array(
-				'relation' => 'AND',
-				array(
-					'taxonomy'         => 'category',
-					'field'            => 'slug',
-					'terms'            => array( 'reviews' ),
-					'include_children' => true,
-					'operator'         => 'IN',
-				),
-				array(
-					'taxonomy' => 'post_tag',
-					'field'    => 'slug',
-					'terms'    => array( 'Laravel' ),
-					'operator' => 'IN',
-				),
-			),
+			'paged'          => $paged,
+			'posts_per_page' => 2,
 		);
+		$query = new WP_Query( $args );
 		$query = new WP_Query( $args );
 		?>
 		<?php if ( $query->have_posts() ) : ?>
@@ -41,6 +34,20 @@
 					</div>
 				<?php endwhile; ?>
 			</div>
+			<?php
+			$args = array(
+				'type'      => 'list', // ul with li tags instead of tag a.
+				'total'     => $query->max_num_pages, // total amount of pages.
+				'current'   => ( ( $query->query_vars['paged'] ) ? $query->query_vars['paged'] : 1 ), // current page number.
+				'show_all'  => false, // set to true if you want to show all pages at once.
+				'mid_size'  => 2, // how much page numbers to show on the each side of the current page.
+				'end_size'  => 2, // how much page numbers to show at the beginning and at the end of the list.
+				'prev_next' => true, // if you set this to false, the previous and the next post links will be removed.
+				'prev_text' => '«', // «
+				'next_text' => '»', // »
+			);
+			?>
+			<div class="pagination"><?php echo paginate_links( $args ); ?></div>
 		<?php else : ?>
 			<?php echo esc_html__( 'Pages not found yet, sorry!', 'simple' ); ?>
 		<?php endif; ?>
