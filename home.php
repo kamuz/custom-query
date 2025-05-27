@@ -1,5 +1,19 @@
 <?php get_header(); ?>
 	<?php
+	/**
+	 * Setup pagination
+	 */
+	if ( get_query_var( 'paged' ) ) {
+		$paged = get_query_var( 'paged' );
+	} elseif ( get_query_var( 'page' ) ) {
+		$paged = get_query_var( 'page' );
+	} else {
+		$paged = 1;
+	}
+
+	/**
+	 * Setup filters
+	 */
 	if ( ! empty( $_GET['minprice'] ) ) {
 		$minprice = $_GET['minprice'];
 	} else {
@@ -52,7 +66,8 @@
 		<?php
 		$args  = array(
 			'post_type'      => 'post',
-			'posts_per_page' => -1,
+			'paged'          => $paged,
+			'posts_per_page' => 2,
 			'meta_query'     => array(
 				'relation' => 'AND',
 				array(
@@ -98,6 +113,20 @@
 					</div>
 				</div>
 			<?php endwhile; ?>
+			<?php
+			$args = array(
+				'type'      => 'list', // ul with li tags instead of tag a.
+				'total'     => $query->max_num_pages, // total amount of pages.
+				'current'   => ( ( $query->query_vars['paged'] ) ? $query->query_vars['paged'] : 1 ), // current page number.
+				'show_all'  => false, // set to true if you want to show all pages at once.
+				'mid_size'  => 2, // how much page numbers to show on the each side of the current page.
+				'end_size'  => 2, // how much page numbers to show at the beginning and at the end of the list.
+				'prev_next' => true, // if you set this to false, the previous and the next post links will be removed.
+				'prev_text' => '«', // «
+				'next_text' => '»', // »
+			);
+			?>
+			<div class="pagination"><?php echo paginate_links( $args ); ?></div>
 		<?php else : ?>
 			<?php echo esc_html__( 'Sorry, but product not found yet!', 'simple' ); ?>
 		<?php endif; ?>
